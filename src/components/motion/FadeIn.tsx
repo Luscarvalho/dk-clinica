@@ -44,7 +44,6 @@ export default function FadeIn({
         ease: [0.16, 1, 0.3, 1],
       }}
       className={className}
-      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </m.div>

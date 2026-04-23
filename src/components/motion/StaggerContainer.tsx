@@ -76,11 +76,7 @@ export function StaggerItem({
   };
 
   return (
-    <m.div
-      variants={itemVariants}
-      className={className}
-      style={{ willChange: "transform, opacity", ...style }}
-    >
+    <m.div variants={itemVariants} className={className} style={style}>
       {children}
     </m.div>
   );

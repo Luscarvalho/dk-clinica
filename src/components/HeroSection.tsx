@@ -28,7 +28,7 @@ export default function HeroSection() {
       {/* ─── HERO ─────────────────────────────────────────────── */}
       <section
         id="hero"
-        className="relative flex min-h-dvh items-center overflow-hidden bg-offwhite pt-20"
+        className="relative flex min-h-svh md:min-h-dvh items-center overflow-hidden bg-offwhite pt-20"
       >
         {/* Photo — right side, faded into background on the left */}
         <div className="absolute inset-0 flex justify-end opacity-15 md:opacity-100 transition-opacity duration-300">
