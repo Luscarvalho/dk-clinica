@@ -1,5 +1,6 @@
 import { ClipboardCheck, Target, Layers, Eye, Award } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import FadeIn from "./motion/FadeIn";
+import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
 const STEPS = [
   { icon: ClipboardCheck, label: "Avaliação" },
@@ -13,7 +14,7 @@ export default function MethodSection() {
   return (
     <section className="relative bg-offwhite grain-overlay">
       <div className="mx-auto max-w-5xl px-6 pt-16 pb-24 lg:px-8 lg:pt-20 lg:pb-32">
-        <ScrollReveal>
+        <FadeIn direction="up">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
               O problema não é você.
@@ -23,9 +24,9 @@ export default function MethodSection() {
               </span>
             </h2>
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
-        <ScrollReveal delay={200}>
+        <FadeIn delay={0.2} direction="up">
           <div className="mx-auto mt-10 max-w-2xl space-y-4 text-center">
             <p className="font-body text-base leading-relaxed text-text-muted sm:text-lg">
               O mercado vende procedimentos. A DK trabalha com{" "}
@@ -42,10 +43,10 @@ export default function MethodSection() {
               </strong>
             </p>
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
         {/* Timeline */}
-        <ScrollReveal delay={400}>
+        <StaggerContainer delayChildren={0.4} staggerChildren={0.15}>
           <div className="mx-auto mt-16 max-w-4xl">
             {/* Desktop: horizontal */}
             <div className="hidden md:block">
@@ -54,26 +55,27 @@ export default function MethodSection() {
                 <div className="absolute left-[10%] right-[10%] top-7 h-px bg-linear-to-r from-gold/20 via-gold to-gold/20" />
 
                 {STEPS.map((step, i) => (
-                  <div
+                  <StaggerItem
                     key={step.label}
-                    className="relative flex flex-col items-center gap-3"
+                    direction="up"
+                    className="relative flex flex-col items-center gap-4"
                     style={{ flex: "1" }}
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-offwhite shadow-[0_2px_12px_rgba(216,178,43,0.15)] transition-all duration-300 hover:border-gold hover:shadow-[0_4px_20px_rgba(216,178,43,0.25)]">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-offwhite shadow-[0_2px_12px_rgba(216,178,43,0.15)] transition-all duration-300 hover:border-gold hover:shadow-[0_4px_20px_rgba(216,178,43,0.25)] hover:-translate-y-1">
                       <step.icon
                         size={22}
                         className="text-brown-gold"
                         strokeWidth={1.5}
                       />
                     </div>
-                    <span className="mt-1 max-w-[100px] text-center font-body text-xs font-medium tracking-wide text-text-muted sm:text-sm">
+                    <span className="max-w-[100px] text-center font-body text-xs font-medium tracking-wide text-text-muted sm:text-sm">
                       {step.label}
                     </span>
                     {/* Step number */}
-                    <span className="absolute -top-3 font-display text-xs font-semibold text-gold/60">
+                    <span className="absolute -top-5 font-display text-xs font-semibold text-gold/60">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                  </div>
+                  </StaggerItem>
                 ))}
               </div>
             </div>
@@ -86,12 +88,13 @@ export default function MethodSection() {
 
                 <div className="space-y-8">
                   {STEPS.map((step, i) => (
-                    <div
+                    <StaggerItem
                       key={step.label}
-                      className="relative flex items-center gap-5 pl-8"
+                      direction="left"
+                      className="relative flex items-center gap-5 pl-8 group"
                     >
                       {/* Dot on line */}
-                      <div className="absolute left-0 -translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-offwhite shadow-sm">
+                      <div className="absolute left-0 -translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-offwhite shadow-sm transition-transform duration-300 group-hover:scale-110">
                         <step.icon
                           size={18}
                           className="text-brown-gold"
@@ -106,13 +109,13 @@ export default function MethodSection() {
                           {step.label}
                         </p>
                       </div>
-                    </div>
+                    </StaggerItem>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-        </ScrollReveal>
+        </StaggerContainer>
       </div>
     </section>
   );

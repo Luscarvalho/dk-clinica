@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import HeroSection from "./components/HeroSection";
 import DesireSection from "./components/DesireSection";
 import MethodSection from "./components/MethodSection";
@@ -10,7 +11,12 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 z-50 py-4 pointer-events-none">
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute top-0 left-0 right-0 z-50 py-4 pointer-events-none"
+      >
         <div className="mx-auto flex max-w-7xl items-center px-6 lg:px-8">
           <a
             href="#"
@@ -33,7 +39,7 @@ function App() {
             </div>
           </a>
         </div>
-      </header>
+      </motion.header>
       <main id="main-content">
         <HeroSection />
         <DesireSection />

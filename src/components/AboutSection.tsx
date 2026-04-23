@@ -1,5 +1,6 @@
 import { ShieldCheck, CheckCircle2, Handshake, Star } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import FadeIn from "./motion/FadeIn";
+import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
 const VALUES = [
   {
@@ -28,16 +29,16 @@ export default function AboutSection() {
   return (
     <section id="sobre" className="relative bg-offwhite grain-overlay">
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
-        <ScrollReveal>
+        <FadeIn direction="up">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
               Um espaço pensado para o seu bem-estar
             </h2>
             <div className="mx-auto mt-4 gold-line" />
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
-        <ScrollReveal delay={200}>
+        <FadeIn delay={0.2} direction="up">
           <div className="mx-auto mt-10 max-w-2xl space-y-4 text-center">
             <p className="font-body text-base leading-relaxed text-text-muted sm:text-lg">
               Na DK Estética, cada atendimento é pensado de forma personalizada,
@@ -48,13 +49,13 @@ export default function AboutSection() {
               entregar resultados que valorizam a sua beleza natural.
             </p>
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
         {/* Values Grid */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8">
+        <StaggerContainer delayChildren={0.4} staggerChildren={0.15} className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8">
           {VALUES.map((value, i) => (
-            <ScrollReveal key={value.title} delay={300 + i * 100}>
-              <div className="flex items-start gap-4 rounded-xl border border-gold/10 bg-white/50 p-6 transition-all duration-300 hover:border-gold/25 hover:bg-white/80 lg:p-8">
+            <StaggerItem key={value.title} direction="up">
+              <div className="flex items-start gap-4 rounded-xl border border-gold/10 bg-white/50 p-6 transition-all duration-300 hover:border-gold/25 hover:bg-white/80 hover:-translate-y-1 lg:p-8">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-gold/10 to-nude/25">
                   <value.icon
                     size={22}
@@ -71,9 +72,9 @@ export default function AboutSection() {
                   </p>
                 </div>
               </div>
-            </ScrollReveal>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

@@ -1,17 +1,17 @@
 import { Gem } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import FadeIn from "./motion/FadeIn";
 
 export default function ProofSection() {
   return (
     <section className="relative overflow-hidden bg-linear-to-b from-offwhite via-nude/15 to-nude/25 section-glow">
       <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8 lg:py-32">
-        <ScrollReveal>
+        <FadeIn direction="up">
           <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
             Você já sente diferença na primeira sessão
           </h2>
-        </ScrollReveal>
+        </FadeIn>
 
-        <ScrollReveal delay={200}>
+        <FadeIn delay={0.2} direction="up">
           <div className="mx-auto mt-10 max-w-2xl space-y-4">
             <p className="font-body text-base leading-relaxed text-text-muted sm:text-lg">
               Antes de qualquer protocolo, você passa pela{" "}
@@ -29,17 +29,17 @@ export default function ProofSection() {
               Você não começa no escuro. Você começa com segurança.
             </p>
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
         {/* Badge */}
-        <ScrollReveal delay={400}>
-          <div className="mt-10 inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-linear-to-r from-gold/10 to-nude/20 px-6 py-3 shadow-[0_2px_12px_rgba(216,178,43,0.12)]">
+        <FadeIn delay={0.4} direction="up">
+          <div className="mt-10 inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-linear-to-r from-gold/10 to-nude/20 px-6 py-3 shadow-[0_2px_12px_rgba(216,178,43,0.12)] transition-transform duration-300 hover:scale-105">
             <Gem size={18} className="text-gold" strokeWidth={1.5} />
             <span className="font-body text-sm font-semibold tracking-wide text-brown-gold">
               Investimento vira crédito no tratamento
             </span>
           </div>
-        </ScrollReveal>
+        </FadeIn>
       </div>
     </section>
   );

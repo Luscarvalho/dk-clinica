@@ -1,5 +1,6 @@
 import { Sparkles, Move3D, Dumbbell, HeartPulse } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import FadeIn from "./motion/FadeIn";
+import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
 const SERVICES = [
   {
@@ -59,20 +60,24 @@ export default function ServicesSection() {
       <div className="mx-auto h-px w-full max-w-lg bg-linear-to-r from-transparent via-gold/40 to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
-        <ScrollReveal>
+        <FadeIn direction="up">
           <div className="text-center">
             <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
               Tratamentos com direção e resultado
             </h2>
             <div className="mx-auto mt-4 gold-line" />
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
         {/* Cards Grid */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8">
-          {SERVICES.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 100}>
-              <article className="group relative flex h-full flex-col rounded-2xl border border-gold/15 bg-white/70 p-8 backdrop-blur-sm transition-all duration-300 hover:border-gold/40 hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(125,91,1,0.12)] hover:bg-gold/3 lg:p-10">
+        <StaggerContainer
+          delayChildren={0.2}
+          staggerChildren={0.15}
+          className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8"
+        >
+          {SERVICES.map((service) => (
+            <StaggerItem key={service.title} direction="up">
+              <article className="group relative flex h-full flex-col rounded-2xl border border-gold/15 bg-white/70 p-8 backdrop-blur-sm transition-all duration-300 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_12px_48px_rgba(125,91,1,0.12)] hover:bg-gold/3 lg:p-10">
                 {/* Tag */}
                 <span
                   className={`inline-block self-start rounded-full px-3 py-1 font-body text-[10px] font-bold tracking-[0.15em] uppercase ${service.tagColor}`}
@@ -81,7 +86,7 @@ export default function ServicesSection() {
                 </span>
 
                 {/* Icon */}
-                <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-gold/10 to-nude/30 transition-transform duration-300 group-hover:scale-105">
+                <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-gold/10 to-nude/30 transition-transform duration-300 group-hover:scale-110">
                   <service.icon
                     size={24}
                     className="text-brown-gold"
@@ -103,12 +108,12 @@ export default function ServicesSection() {
                 {/* Hover gold accent */}
                 <div className="absolute bottom-0 left-8 right-8 h-px origin-left scale-x-0 bg-linear-to-r from-gold via-brown-gold to-gold transition-transform duration-500 group-hover:scale-x-100" />
               </article>
-            </ScrollReveal>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Extra services */}
-        <ScrollReveal delay={500}>
+        <FadeIn delay={0.4} direction="up">
           <div className="mt-14 text-center">
             <p className="font-body text-sm leading-relaxed text-text-muted">
               <span className="font-medium text-text">Também realizamos: </span>
@@ -122,7 +127,7 @@ export default function ServicesSection() {
               ))}
             </p>
           </div>
-        </ScrollReveal>
+        </FadeIn>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import { motion } from "motion/react";
+import FadeIn from "./motion/FadeIn";
 
 const WHATSAPP_URL =
   "https://wa.me/5592999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20na%20DK%20Est%C3%A9tica.";
@@ -9,7 +10,7 @@ export default function Footer() {
     <footer className="relative bg-text">
       <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8 lg:py-32">
         {/* Closing quote */}
-        <ScrollReveal>
+        <FadeIn direction="up">
           <div className="text-center">
             <p className="font-display text-3xl font-normal leading-tight text-white sm:text-4xl md:text-5xl">
               Resultado não vem de tentativa.
@@ -21,19 +22,21 @@ export default function Footer() {
             </p>
 
             <div className="mt-10">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 href="#contato"
-                className="btn-shimmer group inline-flex items-center gap-3 rounded-full px-10 py-5 font-body text-lg font-semibold text-white shadow-[0_4px_24px_rgba(125,91,1,0.3)] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(216,178,43,0.5)] active:scale-[0.97]"
+                className="btn-shimmer group inline-flex items-center gap-3 rounded-full px-10 py-5 font-body text-lg font-semibold text-white shadow-[0_4px_24px_rgba(125,91,1,0.3)] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(216,178,43,0.5)]"
               >
                 Agendar agora
                 <ArrowRight
                   size={20}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </a>
+              </motion.a>
             </div>
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
         {/* Divider */}
         <div className="mx-auto mt-20 h-px w-full max-w-md bg-linear-to-r from-transparent via-white/10 to-transparent" />

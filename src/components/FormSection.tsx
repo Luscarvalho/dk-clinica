@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import { motion } from "motion/react";
+import FadeIn from "./motion/FadeIn";
 
 const GOALS = [
   { value: "", label: "Selecione seu objetivo" },
@@ -73,7 +74,7 @@ export default function FormSection() {
       </div>
 
       <div className="relative mx-auto max-w-4xl px-6 py-24 lg:px-8 lg:py-32">
-        <ScrollReveal>
+        <FadeIn direction="up">
           <div className="text-center">
             <h2 className="font-display text-3xl font-normal leading-tight text-white sm:text-4xl md:text-5xl">
               Se você já tentou de tudo e nada resolveu de verdade...
@@ -86,10 +87,10 @@ export default function FormSection() {
               Com método. Com direção. Com acompanhamento.
             </p>
           </div>
-        </ScrollReveal>
+        </FadeIn>
 
         {/* Form */}
-        <ScrollReveal delay={200}>
+        <FadeIn delay={0.2} direction="up">
           <form
             onSubmit={handleSubmit}
             className="mx-auto mt-12 max-w-md space-y-5"
@@ -207,10 +208,12 @@ export default function FormSection() {
             </div>
 
             {/* Submit */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
-              className="group mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 font-body text-base font-bold text-brown-gold-dark shadow-[0_4px_24px_rgba(216,178,43,0.35)] transition-all duration-300 hover:bg-gold-light hover:shadow-[0_8px_32px_rgba(216,178,43,0.5)] disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.97]"
+              className="group mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 font-body text-base font-bold text-brown-gold-dark shadow-[0_4px_24px_rgba(216,178,43,0.35)] transition-shadow duration-300 hover:bg-gold-light hover:shadow-[0_8px_32px_rgba(216,178,43,0.5)] disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <>
@@ -226,9 +229,9 @@ export default function FormSection() {
                   />
                 </>
               )}
-            </button>
+            </motion.button>
           </form>
-        </ScrollReveal>
+        </FadeIn>
       </div>
     </section>
   );
