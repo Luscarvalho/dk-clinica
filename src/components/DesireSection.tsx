@@ -10,26 +10,26 @@ export default function DesireSection() {
       <div className="mx-auto max-w-3xl px-6 pt-24 pb-4 lg:px-8 lg:pt-32 lg:pb-8">
         <FadeIn direction="up">
           <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl text-center">
-            Não é só estética
+            Você já tentou
           </h2>
         </FadeIn>
 
         <div className="mt-12 space-y-5">
           <FadeIn delay={0.1} direction="up">
             <p className="font-display text-xl font-normal italic leading-relaxed text-text-muted sm:text-2xl pl-0 md:pl-0">
-              É se olhar no espelho e gostar do que vê.
+              Já investiu.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.2} direction="up">
             <p className="font-display text-xl font-normal italic leading-relaxed text-text-muted sm:text-2xl pl-6 md:pl-16">
-              É se sentir desejada de novo — segura, confiante.
+              Já acreditou que agora ia.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.3} direction="up">
             <p className="font-display text-xl font-normal italic leading-relaxed text-text-muted sm:text-2xl pl-12 md:pl-32">
-              É voltar a ter controle sobre o próprio corpo.
+              Mas o resultado não fica.
             </p>
           </FadeIn>
 
@@ -44,9 +44,15 @@ export default function DesireSection() {
           </FadeIn>
 
           <FadeIn delay={0.5} direction="up">
-            <p className="font-body text-base leading-relaxed text-text-muted sm:text-lg text-center">
-              Sem esconder. Sem improvisar. Sem frustração acumulada.
-            </p>
+            <div className="text-center space-y-3 mt-2">
+              <p className="font-body text-base text-text-muted sm:text-lg">
+                O problema não é você.
+              </p>
+              <p className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
+                É o jeito que fazem{" "}
+                <em className="not-italic text-brown-gold">estética.</em>
+              </p>
+            </div>
           </FadeIn>
         </div>
       </div>

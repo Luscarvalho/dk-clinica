@@ -40,7 +40,7 @@ export default function FormSection() {
 
     const goalText = goal || "Ainda não definido";
     const message = encodeURIComponent(
-      `Olá, sou ${name.trim()}. Meu objetivo é: ${goalText}. Quero agendar minha avaliação estratégica na DK Estética.`,
+      `Olá, sou ${name.trim()}.\nMeu objetivo é: ${goalText}.\nQuero agendar minha avaliação estratégica.`,
     );
     const whatsappUrl = `https://wa.me/5592999999999?text=${message}`;
 
@@ -77,14 +77,14 @@ export default function FormSection() {
         <FadeIn direction="up">
           <div className="text-center">
             <h2 className="font-display text-3xl font-normal leading-tight text-white sm:text-4xl md:text-5xl">
-              Se você já tentou de tudo e nada resolveu de verdade...
+              Se você já tentou e não conseguiu o resultado que queria
               <br />
               <span className="text-gold-light">
-                Talvez seja hora de fazer diferente.
+                Talvez não seja falta de esforço.
               </span>
             </h2>
             <p className="mt-4 font-display text-lg italic text-white/80 sm:text-xl">
-              Com método. Com direção. Com acompanhamento.
+              Seja falta de direção. Agora existe um método.
             </p>
           </div>
         </FadeIn>
@@ -181,7 +181,7 @@ export default function FormSection() {
                 htmlFor="form-goal"
                 className="mb-1.5 block font-body text-sm font-medium text-white/80"
               >
-                Qual é o seu objetivo?
+                Qual seu objetivo hoje
               </label>
               <select
                 id="form-goal"
@@ -222,7 +222,7 @@ export default function FormSection() {
                 </>
               ) : (
                 <>
-                  Quero agendar minha avaliação
+                  Quero minha avaliação do Método DK
                   <ArrowRight
                     size={20}
                     className="transition-transform duration-300 group-hover:translate-x-1"
@@ -230,6 +230,10 @@ export default function FormSection() {
                 </>
               )}
             </m.button>
+
+            <p className="text-center font-body text-xs text-white/50 mt-3">
+              Vagas limitadas por agenda da clínica.
+            </p>
           </form>
         </FadeIn>
       </div>

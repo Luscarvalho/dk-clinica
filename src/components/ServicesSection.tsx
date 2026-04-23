@@ -1,4 +1,4 @@
-import { Sparkles, Move3D, Dumbbell, HeartPulse } from "lucide-react";
+import { Sparkles, Move3D, Dumbbell, HeartPulse, Gem } from "lucide-react";
 import { m, useMotionValue, useTransform, animate } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
@@ -9,50 +9,49 @@ const SERVICES = [
     image: "/method_01.jpg",
     tag: "FACIAL",
     tagColor: "bg-gold/15 text-brown-gold",
-    title: "Método Glow DK",
-    subtitle: "Efeito pele renovada",
+    title: "Glow DK",
+    subtitle: "Qualidade de pele e aparência jovem",
     description:
-      "Pele mais jovem, iluminada e uniforme. Ideal para envelhecimento, opacidade e linhas finas.",
+      "Para quem quer recuperar a qualidade da pele e uma aparência mais jovem.",
   },
   {
     icon: Move3D,
     image: "/method_02.jpg",
     tag: "CORPORAL",
     tagColor: "bg-nude/40 text-brown-gold",
-    title: "Método Contorno DK",
-    subtitle: "Reduza medidas com estratégia",
-    description:
-      "Focado em gordura localizada, com melhora progressiva no contorno corporal.",
+    title: "Contorno DK",
+    subtitle: "Redução de medidas e redefinição",
+    description: "Para quem quer reduzir medidas e redefinir o corpo.",
   },
   {
     icon: Dumbbell,
     image: "/method_03.jpg",
     tag: "CORPORAL",
     tagColor: "bg-nude/40 text-brown-gold",
-    title: "Método Corpo Definido DK",
-    subtitle: "Definição e firmeza no seu corpo",
+    title: "Corpo Definido",
+    subtitle: "Flacidez e gordura de forma combinada",
     description:
-      "Tratamento para flacidez e gordura, promovendo mais firmeza e definição corporal.",
+      "Para quem precisa tratar flacidez e gordura de forma combinada.",
   },
   {
     icon: HeartPulse,
     image: "/method_04.jpg",
     tag: "RECUPERAÇÃO",
     tagColor: "bg-brown-gold/10 text-brown-gold",
-    title: "Método Regenere DK",
-    subtitle: "Recupere-se com mais segurança",
-    description:
-      "Indicado para pós-cirúrgico, auxiliando na recuperação e redução de inchaço.",
+    title: "Regenere DK",
+    subtitle: "Recuperação segura no pós-operatório",
+    description: "Para quem precisa de recuperação segura no pós-operatório.",
   },
-];
-
-const EXTRA_SERVICES = [
-  "Limpeza de Pele Premium",
-  "Bioestimulador",
-  "Botox",
-  "Preenchimento Labial",
-  "Drenagem Linfática",
-  "Liberação Miofascial",
+  {
+    icon: Gem,
+    image: "/method_05.jpg",
+    tag: "ESTÉTICA",
+    tagColor: "bg-gold/10 text-brown-gold",
+    title: "Harmony DK",
+    subtitle: "Estética e autoestima",
+    description:
+      "Para quem busca uma melhora mais ampla na estética e autoestima.",
+  },
 ];
 
 function TiltCard({ children }: { children: React.ReactNode }) {
@@ -102,10 +101,17 @@ export default function ServicesSection() {
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
         <FadeIn direction="up">
           <div className="text-center">
+            <p className="font-body text-[11px] font-semibold tracking-[0.2em] text-text-muted uppercase mb-4">
+              Além do Método DK
+            </p>
             <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
-              Tratamentos com direção e resultado
+              A clínica oferece protocolos específicos
             </h2>
             <div className="mx-auto mt-4 gold-line" />
+            <p className="mt-6 font-body text-base text-text-muted max-w-xl mx-auto">
+              Indicados para quem deseja tratar pontos isolados ou iniciar de
+              forma mais pontual.
+            </p>
           </div>
         </FadeIn>
 
@@ -115,8 +121,16 @@ export default function ServicesSection() {
           staggerChildren={0.15}
           className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8"
         >
-          {SERVICES.map((service) => (
-            <StaggerItem key={service.title} direction="up">
+          {SERVICES.map((service, i) => (
+            <StaggerItem
+              key={service.title}
+              direction="up"
+              className={
+                i === SERVICES.length - 1 && SERVICES.length % 2 !== 0
+                  ? "sm:col-span-2 sm:mx-auto sm:w-1/2"
+                  : ""
+              }
+            >
               <TiltCard>
                 <article className="card-animated-border group relative flex h-full flex-col rounded-2xl border border-gold/15 bg-white/70 p-8 backdrop-blur-sm hover:border-gold/40 hover:shadow-[0_12px_48px_rgba(125,91,1,0.12)] hover:bg-gold/3 lg:p-10">
                   {/* Tag + Icon */}
@@ -161,23 +175,6 @@ export default function ServicesSection() {
             </StaggerItem>
           ))}
         </StaggerContainer>
-
-        {/* Extra services */}
-        <FadeIn delay={0.4} direction="up">
-          <div className="mt-14 text-center">
-            <p className="font-body text-sm leading-relaxed text-text-muted">
-              <span className="font-medium text-text">Também realizamos: </span>
-              {EXTRA_SERVICES.map((s, i) => (
-                <span key={s}>
-                  {s}
-                  {i < EXTRA_SERVICES.length - 1 && (
-                    <span className="mx-1 text-gold">·</span>
-                  )}
-                </span>
-              ))}
-            </p>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

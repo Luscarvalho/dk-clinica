@@ -3,18 +3,20 @@ import FadeIn from "./motion/FadeIn";
 
 export default function ProofSection() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-offwhite via-nude/15 to-nude/25 section-glow">
-      <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8 lg:py-32">
+    <section className="relative overflow-hidden bg-offwhite section-glow">
+      <div className="mx-auto max-w-4xl px-6 pt-10 pb-20 text-center lg:px-8 lg:pt-12 lg:pb-28">
         <FadeIn direction="up">
-          <h2 className="font-display text-3xl font-normal leading-tight text-text sm:text-4xl md:text-5xl">
-            Você já sente diferença na primeira sessão
+          <h2 className="font-display text-4xl font-normal leading-tight text-text sm:text-5xl md:text-6xl">
+            Você já sente diferença
+            <br />
+            <em className="not-italic text-brown-gold">na primeira sessão</em>
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.2} direction="up">
           <div className="mx-auto mt-10 max-w-2xl space-y-4">
             <p className="font-body text-base leading-relaxed text-text-muted sm:text-lg">
-              Antes de qualquer protocolo, você passa pela{" "}
+              Antes de qualquer tratamento, você passa pela{" "}
               <strong className="font-semibold text-text">Experience DK</strong>{" "}
               — uma sessão estratégica com avaliação e aplicação real.
             </p>
@@ -22,11 +24,12 @@ export default function ProofSection() {
               Você vê. Você sente.
               <br />E se decidir continuar,{" "}
               <strong className="font-semibold text-text">
-                o valor investido vira crédito no tratamento.
+                o valor vira crédito.
               </strong>
             </p>
             <p className="font-body text-base leading-relaxed text-text-muted sm:text-lg">
-              Você não começa no escuro. Você começa com segurança.
+              Essa é a primeira etapa para entender o que o seu corpo realmente
+              precisa.
             </p>
           </div>
         </FadeIn>

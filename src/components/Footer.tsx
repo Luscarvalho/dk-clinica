@@ -1,5 +1,4 @@
-import { ArrowRight, MapPin } from "lucide-react";
-import { m } from "motion/react";
+import { MapPin } from "lucide-react";
 import FadeIn from "./motion/FadeIn";
 
 export default function Footer() {
@@ -17,21 +16,6 @@ export default function Footer() {
             <p className="mt-6 font-display text-lg italic text-white/60 sm:text-xl">
               Se for para investir em você — faça do jeito certo.
             </p>
-
-            <div className="mt-10">
-              <m.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#contato"
-                className="btn-animated-border group inline-flex items-center gap-3 rounded-full px-10 py-5 font-body text-lg font-semibold text-white shadow-[0_4px_24px_rgba(125,91,1,0.3)] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(216,178,43,0.5)]"
-              >
-                Agendar agora
-                <ArrowRight
-                  size={20}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </m.a>
-            </div>
           </div>
         </FadeIn>
 

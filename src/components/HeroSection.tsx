@@ -113,23 +113,22 @@ export default function HeroSection() {
               </div>
 
               {/* Sub-headline */}
-              <StaggerItem direction="up" className="mt-6 space-y-1">
+              <StaggerItem direction="up" className="mt-6">
                 <p className="font-display text-xl italic font-normal text-text-muted sm:text-2xl">
-                  Seu corpo muda. Sua pele muda.
-                </p>
-                <p className="font-display text-xl italic font-normal text-text-muted sm:text-2xl">
-                  E o que você tenta… não acompanha.
+                  Você já tentou melhorar seu corpo ou sua pele.
                 </p>
               </StaggerItem>
 
               {/* Support text */}
               <StaggerItem direction="up">
                 <p className="mt-6 font-body text-base leading-relaxed text-text-muted sm:text-lg max-w-md">
-                  Você já tentou cuidar. Já fez procedimento. Já investiu tempo.
-                  Mas o resultado não sustenta.
+                  Mas o resultado nunca se sustenta.
                 </p>
-                <p className="mt-2 font-body text-base font-semibold text-text sm:text-lg">
-                  Não é falta de esforço. É falta de direção.
+                <p className="mt-2 font-body text-base leading-relaxed text-text-muted sm:text-lg">
+                  Não é falta de esforço.
+                </p>
+                <p className="mt-1 font-body text-base font-semibold text-text sm:text-lg">
+                  É falta de direção.
                 </p>
               </StaggerItem>
 
@@ -150,6 +149,28 @@ export default function HeroSection() {
                     className="shrink-0 transition-transform duration-200 group-hover:translate-x-1"
                   />
                 </m.a>
+              </StaggerItem>
+
+              {/* Social proof */}
+              <StaggerItem direction="up" className="mt-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3.5 w-3.5 fill-gold"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="font-body text-[11px] text-text-muted leading-tight">
+                    Centenas de clientes transformados em Manaus
+                  </span>
+                </div>
               </StaggerItem>
 
               {/* Scroll indicator */}

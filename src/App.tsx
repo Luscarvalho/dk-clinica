@@ -14,7 +14,6 @@ import DesireSection from "./components/DesireSection";
 import MethodSection from "./components/MethodSection";
 import ServicesSection from "./components/ServicesSection";
 import ProofSection from "./components/ProofSection";
-import AboutSection from "./components/AboutSection";
 import FormSection from "./components/FormSection";
 import Footer from "./components/Footer";
 
@@ -78,7 +77,6 @@ function App() {
         <MethodSection />
         <ServicesSection />
         <ProofSection />
-        <AboutSection />
         <div ref={formRef}>
           <FormSection />
         </div>
