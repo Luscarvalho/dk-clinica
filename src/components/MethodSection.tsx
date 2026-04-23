@@ -67,7 +67,7 @@ export default function MethodSection() {
         </FadeIn>
 
         {/* Timeline */}
-        <StaggerContainer delayChildren={0.4} staggerChildren={0.15}>
+        <StaggerContainer delayChildren={0.15} staggerChildren={0.1}>
           <div className="mx-auto mt-16 max-w-4xl">
             {/* Desktop: horizontal */}
             <div className="hidden md:block">
