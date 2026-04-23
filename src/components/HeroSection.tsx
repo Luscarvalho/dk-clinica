@@ -43,7 +43,7 @@ export default function HeroSection() {
         </div>
 
         {/* Content — left column */}
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-32 lg:px-12 xl:px-16">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 md:py-24 xl:py-32 lg:px-12 xl:px-16">
           <m.div style={{ y: textY }}>
             <StaggerContainer className="max-w-xl" staggerChildren={0.15}>
               {/* Eyebrow */}

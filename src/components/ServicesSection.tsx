@@ -6,6 +6,7 @@ import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 const SERVICES = [
   {
     icon: Sparkles,
+    image: "/method_01.jpg",
     tag: "FACIAL",
     tagColor: "bg-gold/15 text-brown-gold",
     title: "Método Glow DK",
@@ -15,6 +16,7 @@ const SERVICES = [
   },
   {
     icon: Move3D,
+    image: "/method_02.jpg",
     tag: "CORPORAL",
     tagColor: "bg-nude/40 text-brown-gold",
     title: "Método Contorno DK",
@@ -24,6 +26,7 @@ const SERVICES = [
   },
   {
     icon: Dumbbell,
+    image: "/method_03.jpg",
     tag: "CORPORAL",
     tagColor: "bg-nude/40 text-brown-gold",
     title: "Método Corpo Definido DK",
@@ -33,6 +36,7 @@ const SERVICES = [
   },
   {
     icon: HeartPulse,
+    image: "/method_04.jpg",
     tag: "RECUPERAÇÃO",
     tagColor: "bg-brown-gold/10 text-brown-gold",
     title: "Método Regenere DK",
@@ -62,7 +66,12 @@ function TiltCard({ children }: { children: React.ReactNode }) {
 
   return (
     <m.div
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      style={{
+        rotateX,
+        rotateY,
+        transformPerspective: 900,
+        willChange: "transform",
+      }}
       onMouseMove={(e) => {
         if (!isPointer()) return;
         const rect = e.currentTarget.getBoundingClientRect();
@@ -110,19 +119,22 @@ export default function ServicesSection() {
             <StaggerItem key={service.title} direction="up">
               <TiltCard>
                 <article className="card-animated-border group relative flex h-full flex-col rounded-2xl border border-gold/15 bg-white/70 p-8 backdrop-blur-sm hover:border-gold/40 hover:shadow-[0_12px_48px_rgba(125,91,1,0.12)] hover:bg-gold/3 lg:p-10">
-                  {/* Tag */}
-                  <span
-                    className={`inline-block self-start rounded-full px-3 py-1 font-body text-[10px] font-bold tracking-[0.15em] uppercase ${service.tagColor}`}
-                  >
-                    {service.tag}
-                  </span>
+                  {/* Tag + Icon */}
+                  <div className="flex items-center gap-2 self-start">
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-body text-[12px] font-bold tracking-[0.15em] uppercase ${service.tagColor}`}
+                    >
+                      <service.icon size={12} strokeWidth={2} />
+                      {service.tag}
+                    </span>
+                  </div>
 
-                  {/* Icon */}
-                  <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-gold/10 to-nude/30 transition-transform duration-300 group-hover:scale-110">
-                    <service.icon
-                      size={24}
-                      className="text-brown-gold"
-                      strokeWidth={1.5}
+                  {/* Image */}
+                  <div className="mt-5 w-36 overflow-hidden rounded-xl aspect-square">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
