@@ -129,25 +129,30 @@ export default function ServicesSection() {
                     </span>
                   </div>
 
-                  {/* Image */}
-                  <div className="mt-5 w-36 overflow-hidden rounded-xl aspect-square">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
+                  {/* Image + Text row */}
+                  <div className="mt-5 flex items-start gap-5">
+                    {/* Image */}
+                    <div className="w-36 shrink-0 overflow-hidden rounded-xl aspect-square">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
 
-                  {/* Text */}
-                  <h3 className="mt-5 font-display text-xl font-normal text-text sm:text-2xl">
-                    {service.title}
-                  </h3>
-                  <p className="mt-1 font-body text-sm font-medium text-gold">
-                    {service.subtitle}
-                  </p>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-text-muted">
-                    {service.description}
-                  </p>
+                    {/* Text */}
+                    <div className="min-w-0">
+                      <h3 className="font-display text-xl font-normal text-text sm:text-2xl">
+                        {service.title}
+                      </h3>
+                      <p className="mt-1 font-body text-sm font-medium text-gold">
+                        {service.subtitle}
+                      </p>
+                      <p className="mt-3 font-body text-sm leading-relaxed text-text-muted">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
 
                   {/* Hover gold accent */}
                   <div className="absolute bottom-0 left-8 right-8 h-px origin-left scale-x-0 bg-linear-to-r from-gold via-brown-gold to-gold transition-transform duration-500 group-hover:scale-x-100" />
