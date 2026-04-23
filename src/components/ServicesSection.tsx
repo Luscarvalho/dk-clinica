@@ -1,4 +1,5 @@
 import { Sparkles, Move3D, Dumbbell, HeartPulse } from "lucide-react";
+import { m, useMotionValue, useTransform, animate } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
@@ -50,6 +51,36 @@ const EXTRA_SERVICES = [
   "Liberação Miofascial",
 ];
 
+function TiltCard({ children }: { children: React.ReactNode }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-60, 60], [6, -6]);
+  const rotateY = useTransform(x, [-60, 60], [-6, 6]);
+
+  const isPointer = () =>
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  return (
+    <m.div
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      onMouseMove={(e) => {
+        if (!isPointer()) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left - rect.width / 2);
+        y.set(e.clientY - rect.top - rect.height / 2);
+      }}
+      onMouseLeave={() => {
+        if (!isPointer()) return;
+        animate(x, 0, { type: "spring", stiffness: 300, damping: 25 });
+        animate(y, 0, { type: "spring", stiffness: 300, damping: 25 });
+      }}
+      className="h-full"
+    >
+      {children}
+    </m.div>
+  );
+}
+
 export default function ServicesSection() {
   return (
     <section
@@ -77,37 +108,39 @@ export default function ServicesSection() {
         >
           {SERVICES.map((service) => (
             <StaggerItem key={service.title} direction="up">
-              <article className="group relative flex h-full flex-col rounded-2xl border border-gold/15 bg-white/70 p-8 backdrop-blur-sm transition-all duration-300 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_12px_48px_rgba(125,91,1,0.12)] hover:bg-gold/3 lg:p-10">
-                {/* Tag */}
-                <span
-                  className={`inline-block self-start rounded-full px-3 py-1 font-body text-[10px] font-bold tracking-[0.15em] uppercase ${service.tagColor}`}
-                >
-                  {service.tag}
-                </span>
+              <TiltCard>
+                <article className="card-animated-border group relative flex h-full flex-col rounded-2xl border border-gold/15 bg-white/70 p-8 backdrop-blur-sm hover:border-gold/40 hover:shadow-[0_12px_48px_rgba(125,91,1,0.12)] hover:bg-gold/3 lg:p-10">
+                  {/* Tag */}
+                  <span
+                    className={`inline-block self-start rounded-full px-3 py-1 font-body text-[10px] font-bold tracking-[0.15em] uppercase ${service.tagColor}`}
+                  >
+                    {service.tag}
+                  </span>
 
-                {/* Icon */}
-                <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-gold/10 to-nude/30 transition-transform duration-300 group-hover:scale-110">
-                  <service.icon
-                    size={24}
-                    className="text-brown-gold"
-                    strokeWidth={1.5}
-                  />
-                </div>
+                  {/* Icon */}
+                  <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-gold/10 to-nude/30 transition-transform duration-300 group-hover:scale-110">
+                    <service.icon
+                      size={24}
+                      className="text-brown-gold"
+                      strokeWidth={1.5}
+                    />
+                  </div>
 
-                {/* Text */}
-                <h3 className="mt-5 font-display text-xl font-normal text-text sm:text-2xl">
-                  {service.title}
-                </h3>
-                <p className="mt-1 font-body text-sm font-medium text-gold">
-                  {service.subtitle}
-                </p>
-                <p className="mt-3 font-body text-sm leading-relaxed text-text-muted">
-                  {service.description}
-                </p>
+                  {/* Text */}
+                  <h3 className="mt-5 font-display text-xl font-normal text-text sm:text-2xl">
+                    {service.title}
+                  </h3>
+                  <p className="mt-1 font-body text-sm font-medium text-gold">
+                    {service.subtitle}
+                  </p>
+                  <p className="mt-3 font-body text-sm leading-relaxed text-text-muted">
+                    {service.description}
+                  </p>
 
-                {/* Hover gold accent */}
-                <div className="absolute bottom-0 left-8 right-8 h-px origin-left scale-x-0 bg-linear-to-r from-gold via-brown-gold to-gold transition-transform duration-500 group-hover:scale-x-100" />
-              </article>
+                  {/* Hover gold accent */}
+                  <div className="absolute bottom-0 left-8 right-8 h-px origin-left scale-x-0 bg-linear-to-r from-gold via-brown-gold to-gold transition-transform duration-500 group-hover:scale-x-100" />
+                </article>
+              </TiltCard>
             </StaggerItem>
           ))}
         </StaggerContainer>

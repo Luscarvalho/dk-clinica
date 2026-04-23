@@ -41,7 +41,7 @@ export default function FadeIn({
       transition={{
         duration,
         delay,
-        ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier matching the CSS
+        ease: [0.16, 1, 0.3, 1],
       }}
       className={className}
       style={{ willChange: "transform, opacity" }}

@@ -1,4 +1,6 @@
 import { ClipboardCheck, Target, Layers, Eye, Award } from "lucide-react";
+import { useRef } from "react";
+import { m, useScroll, useTransform } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
@@ -11,8 +13,15 @@ const STEPS = [
 ];
 
 export default function MethodSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const lineScaleX = useTransform(scrollYProgress, [0.1, 0.7], [0, 1]);
+  const lineScaleY = useTransform(scrollYProgress, [0.1, 0.85], [0, 1]);
   return (
-    <section className="relative bg-offwhite grain-overlay">
+    <section ref={sectionRef} className="relative bg-offwhite grain-overlay">
       <div className="mx-auto max-w-5xl px-6 pt-16 pb-24 lg:px-8 lg:pt-20 lg:pb-32">
         <FadeIn direction="up">
           <div className="mx-auto max-w-3xl text-center">
@@ -51,8 +60,11 @@ export default function MethodSection() {
             {/* Desktop: horizontal */}
             <div className="hidden md:block">
               <div className="relative flex items-start justify-between">
-                {/* Connecting line */}
-                <div className="absolute left-[10%] right-[10%] top-7 h-px bg-linear-to-r from-gold/20 via-gold to-gold/20" />
+                {/* Connecting line — grows with scroll */}
+                <m.div
+                  style={{ scaleX: lineScaleX, transformOrigin: "left" }}
+                  className="absolute left-[10%] right-[10%] top-7 h-px bg-linear-to-r from-gold/20 via-gold to-gold/20"
+                />
 
                 {STEPS.map((step, i) => (
                   <StaggerItem
@@ -68,11 +80,11 @@ export default function MethodSection() {
                         strokeWidth={1.5}
                       />
                     </div>
-                    <span className="max-w-[100px] text-center font-body text-xs font-medium tracking-wide text-text-muted sm:text-sm">
+                    <span className="max-w-25 text-center font-body text-xs font-medium tracking-wide text-text-muted sm:text-sm">
                       {step.label}
                     </span>
                     {/* Step number */}
-                    <span className="absolute -top-5 font-display text-xs font-semibold text-gold/60">
+                    <span className="absolute -top-7 font-display text-sm font-semibold text-gold/60">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </StaggerItem>
@@ -83,8 +95,11 @@ export default function MethodSection() {
             {/* Mobile: vertical */}
             <div className="md:hidden">
               <div className="relative ml-7">
-                {/* Vertical line */}
-                <div className="absolute left-0 top-0 h-full w-px bg-linear-to-b from-gold/20 via-gold to-gold/20" />
+                {/* Vertical line — grows with scroll */}
+                <m.div
+                  style={{ scaleY: lineScaleY, transformOrigin: "top" }}
+                  className="absolute left-0 top-0 h-full w-px bg-linear-to-b from-gold/20 via-gold to-gold/20"
+                />
 
                 <div className="space-y-8">
                   {STEPS.map((step, i) => (
@@ -102,7 +117,7 @@ export default function MethodSection() {
                         />
                       </div>
                       <div>
-                        <span className="font-display text-xs font-semibold text-gold/60">
+                        <span className="font-display text-sm font-semibold text-gold/60">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <p className="font-body text-sm font-medium text-text">

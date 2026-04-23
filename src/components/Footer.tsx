@@ -1,9 +1,6 @@
-import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { m } from "motion/react";
 import FadeIn from "./motion/FadeIn";
-
-const WHATSAPP_URL =
-  "https://wa.me/5592999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20na%20DK%20Est%C3%A9tica.";
 
 export default function Footer() {
   return (
@@ -26,7 +23,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contato"
-                className="btn-shimmer group inline-flex items-center gap-3 rounded-full px-10 py-5 font-body text-lg font-semibold text-white shadow-[0_4px_24px_rgba(125,91,1,0.3)] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(216,178,43,0.5)]"
+                className="btn-animated-border group inline-flex items-center gap-3 rounded-full px-10 py-5 font-body text-lg font-semibold text-white shadow-[0_4px_24px_rgba(125,91,1,0.3)] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(216,178,43,0.5)]"
               >
                 Agendar agora
                 <ArrowRight
@@ -91,16 +88,6 @@ export default function Footer() {
                 />
               </svg>
               @dkestetica
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-body text-sm text-white/50 transition-colors duration-200 hover:text-gold"
-              aria-label="WhatsApp da DK Estética"
-            >
-              <MessageCircle size={16} strokeWidth={1.5} />
-              WhatsApp
             </a>
             <span className="flex items-center gap-2 font-body text-sm text-white/50">
               <MapPin size={16} strokeWidth={1.5} />

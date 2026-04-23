@@ -72,12 +72,12 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
+@keyframes spin-border {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  100% {
-    background-position: 200% center;
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -86,8 +86,9 @@
    ═══════════════════════════════════════════════════════ */
 
 html {
+  position: relative;
   scroll-behavior: smooth;
-  scroll-padding-top: 64px;
+  scroll-padding-top: 0px;
   overflow-x: hidden;
 }
 
@@ -192,11 +193,7 @@ select:focus-visible {
   left: 50%;
   width: 500px;
   height: 300px;
-  background: radial-gradient(
-    ellipse,
-    var(--color-gold) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse, var(--color-gold) 0%, transparent 70%);
   opacity: 0.05;
   transform: translateX(-50%);
   pointer-events: none;
@@ -208,14 +205,77 @@ select:focus-visible {
   z-index: 1;
 }
 
-/* Footer CTA shimmer */
-.btn-shimmer {
-  background-size: 200% auto;
-  background-image: linear-gradient(
-    90deg,
-    var(--color-brown-gold) 0%,
-    var(--color-gold) 50%,
-    var(--color-brown-gold) 100%
+/* Circulating border CTA */
+.btn-animated-border {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  --btn-bg: var(--color-taupe);
+  --btn-hover-bg: var(--color-brown-gold);
+}
+
+.btn-animated-border::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  aspect-ratio: 1 / 1; /* Garante que é um quadrado perfeito */
+  background: conic-gradient(
+    from 0deg,
+    transparent 40%,
+    var(--color-gold) 80%,
+    transparent 100%
   );
-  animation: shimmer 3s ease-in-out infinite;
+  animation: spin-border 3s linear infinite;
+  z-index: -2;
+}
+
+.btn-animated-border::after {
+  content: "";
+  position: absolute;
+  inset: 2px; /* Thicker border (2px) */
+  background: var(--btn-bg);
+  border-radius: inherit;
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+.btn-animated-border:hover::after {
+  background: var(--btn-hover-bg);
+}
+
+/* Animated border for service cards — mobile only */
+@media (hover: none), (pointer: coarse) {
+  .card-animated-border {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .card-animated-border::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    aspect-ratio: 1 / 1;
+    background: conic-gradient(
+      from 0deg,
+      transparent 50%,
+      var(--color-gold) 85%,
+      transparent 100%
+    );
+    animation: spin-border 4s linear infinite;
+    z-index: -2;
+  }
+
+  .card-animated-border::after {
+    content: "";
+    position: absolute;
+    inset: 1.5px;
+    background: white;
+    border-radius: inherit;
+    z-index: -1;
+  }
 }
