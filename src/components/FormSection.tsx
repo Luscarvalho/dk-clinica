@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 
 const GOALS = [
@@ -208,7 +208,7 @@ export default function FormSection() {
             </div>
 
             {/* Submit */}
-            <motion.button
+            <m.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
@@ -229,7 +229,7 @@ export default function FormSection() {
                   />
                 </>
               )}
-            </motion.button>
+            </m.button>
           </form>
         </FadeIn>
       </div>

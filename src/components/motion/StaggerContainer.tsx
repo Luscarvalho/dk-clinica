@@ -1,4 +1,4 @@
-import { motion, type Variants } from "motion/react";
+import { m, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 
 interface StaggerContainerProps {
@@ -27,7 +27,7 @@ export default function StaggerContainer({
   };
 
   return (
-    <motion.div
+    <m.div
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
@@ -35,7 +35,7 @@ export default function StaggerContainer({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -76,8 +76,12 @@ export function StaggerItem({
   };
 
   return (
-    <motion.div variants={itemVariants} className={className} style={style}>
+    <m.div
+      variants={itemVariants}
+      className={className}
+      style={{ willChange: "transform, opacity", ...style }}
+    >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

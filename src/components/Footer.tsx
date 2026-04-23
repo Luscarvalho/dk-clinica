@@ -1,5 +1,5 @@
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 
 const WHATSAPP_URL =
@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
 
             <div className="mt-10">
-              <motion.a
+              <m.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contato"
@@ -33,7 +33,7 @@ export default function Footer() {
                   size={20}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </motion.a>
+              </m.a>
             </div>
           </div>
         </FadeIn>

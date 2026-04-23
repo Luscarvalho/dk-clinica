@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { ReactNode } from "react";
 
 interface FadeInProps {
@@ -27,7 +27,7 @@ export default function FadeIn({
   };
 
   return (
-    <motion.div
+    <m.div
       initial={{
         opacity: 0,
         ...directions[direction],
@@ -44,8 +44,9 @@ export default function FadeIn({
         ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier matching the CSS
       }}
       className={className}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

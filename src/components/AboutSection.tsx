@@ -52,8 +52,12 @@ export default function AboutSection() {
         </FadeIn>
 
         {/* Values Grid */}
-        <StaggerContainer delayChildren={0.4} staggerChildren={0.15} className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8">
-          {VALUES.map((value, i) => (
+        <StaggerContainer
+          delayChildren={0.4}
+          staggerChildren={0.15}
+          className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8"
+        >
+          {VALUES.map((value) => (
             <StaggerItem key={value.title} direction="up">
               <div className="flex items-start gap-4 rounded-xl border border-gold/10 bg-white/50 p-6 transition-all duration-300 hover:border-gold/25 hover:bg-white/80 hover:-translate-y-1 lg:p-8">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-gold/10 to-nude/25">

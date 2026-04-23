@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { LazyMotion, domAnimation, m } from "motion/react";
 import HeroSection from "./components/HeroSection";
 import DesireSection from "./components/DesireSection";
 import MethodSection from "./components/MethodSection";
@@ -10,8 +10,8 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
-      <motion.header
+    <LazyMotion features={domAnimation}>
+      <m.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -39,7 +39,7 @@ function App() {
             </div>
           </a>
         </div>
-      </motion.header>
+      </m.header>
       <main id="main-content">
         <HeroSection />
         <DesireSection />
@@ -50,7 +50,7 @@ function App() {
         <FormSection />
       </main>
       <Footer />
-    </>
+    </LazyMotion>
   );
 }
 

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 
 export default function DesireSection() {
@@ -34,7 +34,7 @@ export default function DesireSection() {
           </FadeIn>
 
           <FadeIn delay={0.4} direction="up" className="flex justify-center">
-            <motion.div
+            <m.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
