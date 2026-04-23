@@ -52,7 +52,12 @@ export default function FormSection() {
   };
 
   const formatPhone = (value: string) => {
-    const numbers = value.replace(/\D/g, "").slice(0, 11);
+    let numbers = value.replace(/\D/g, "");
+    // Strip country code 55 if present (autofill often adds it)
+    if (numbers.length > 11 && numbers.startsWith("55")) {
+      numbers = numbers.slice(2);
+    }
+    numbers = numbers.slice(0, 11);
     if (numbers.length <= 2) return numbers;
     if (numbers.length <= 7)
       return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
