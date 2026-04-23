@@ -1,6 +1,6 @@
 import { ClipboardCheck, Target, Layers, Eye, Award } from "lucide-react";
-import { useRef } from "react";
-import { m, useScroll, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { m, useScroll, useTransform, useMotionValue } from "motion/react";
 import FadeIn from "./motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
@@ -14,12 +14,24 @@ const STEPS = [
 
 export default function MethodSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const lineScaleX = useTransform(scrollYProgress, [0.1, 0.7], [0, 1]);
-  const lineScaleY = useTransform(scrollYProgress, [0.1, 0.85], [0, 1]);
+  const scrollScaleX = useTransform(scrollYProgress, [0.1, 0.7], [0, 1]);
+  const scrollScaleY = useTransform(scrollYProgress, [0.1, 0.85], [0, 1]);
+  const one = useMotionValue(1);
+
+  const lineScaleX = isMobile ? one : scrollScaleX;
+  const lineScaleY = isMobile ? one : scrollScaleY;
   return (
     <section ref={sectionRef} className="relative bg-offwhite grain-overlay">
       <div className="mx-auto max-w-5xl px-6 pt-16 pb-24 lg:px-8 lg:pt-20 lg:pb-32">
