@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href="https://www.instagram.com/dkestetica"
+              href="https://www.instagram.com/destackestetica"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-body text-sm text-white/50 transition-colors duration-200 hover:text-gold"
@@ -71,7 +71,7 @@ export default function Footer() {
                   stroke="none"
                 />
               </svg>
-              @dkestetica
+              @destackestetica
             </a>
             <span className="flex items-center gap-2 font-body text-sm text-white/50">
               <MapPin size={16} strokeWidth={1.5} />

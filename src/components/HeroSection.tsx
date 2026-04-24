@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
 
 export const WHATSAPP_FAB =
-  "https://wa.me/5592999999999?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20DK%20Est%C3%A9tica.";
+  "https://wa.me/5592985658383?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20DK%20Est%C3%A9tica.";
 
 export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);

@@ -42,7 +42,7 @@ export default function FormSection() {
     const message = encodeURIComponent(
       `Olá, sou ${name.trim()}.\nMeu objetivo é: ${goalText}.\nQuero agendar minha avaliação estratégica.`,
     );
-    const whatsappUrl = `https://wa.me/5592999999999?text=${message}`;
+    const whatsappUrl = `https://wa.me/5592985658383?text=${message}`;
 
     // Small delay for UX feedback
     setTimeout(() => {
