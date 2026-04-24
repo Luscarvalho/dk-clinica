@@ -46,6 +46,9 @@ export default function FormSection() {
 
     // Small delay for UX feedback
     setTimeout(() => {
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Lead", { content_name: "form_whatsapp" });
+      }
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       setLoading(false);
     }, 400);
