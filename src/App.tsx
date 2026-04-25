@@ -98,6 +98,10 @@ function App() {
               if (typeof window.fbq === "function") {
                 window.fbq("track", "Lead", { content_name: "fab_whatsapp" });
               }
+              window.dataLayer?.push({
+                event: "whatsapp_click",
+                click_location: "fab_whatsapp",
+              });
             }}
             initial={{ opacity: 0, y: 16, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}

@@ -145,6 +145,10 @@ export default function HeroSection() {
                     if (typeof window.fbq === "function") {
                       window.fbq("track", "Lead", { content_name: "hero_cta" });
                     }
+                    window.dataLayer?.push({
+                      event: "whatsapp_click",
+                      click_location: "hero_cta",
+                    });
                   }}
                   className="btn-animated-border group inline-flex items-center justify-between gap-8 rounded-full px-8 py-4 font-body text-[13px] font-semibold tracking-[0.12em] text-white uppercase shadow-[0_4px_24px_rgba(125,91,1,0.3)] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(216,178,43,0.5)] min-w-70"
                 >

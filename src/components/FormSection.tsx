@@ -49,6 +49,10 @@ export default function FormSection() {
       if (typeof window.fbq === "function") {
         window.fbq("track", "Lead", { content_name: "form_whatsapp" });
       }
+      window.dataLayer?.push({
+        event: "whatsapp_click",
+        click_location: "form_whatsapp",
+      });
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       setLoading(false);
     }, 400);
