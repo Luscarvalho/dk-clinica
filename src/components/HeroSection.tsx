@@ -142,9 +142,6 @@ export default function HeroSection() {
                   whileTap={{ scale: 0.95 }}
                   href="#contato"
                   onClick={() => {
-                    if (typeof window.fbq === "function") {
-                      window.fbq("track", "Lead", { content_name: "hero_cta" });
-                    }
                     window.dataLayer?.push({
                       event: "whatsapp_click",
                       click_location: "hero_cta",

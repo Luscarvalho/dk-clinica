@@ -46,9 +46,6 @@ export default function FormSection() {
 
     // Small delay for UX feedback
     setTimeout(() => {
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "Lead", { content_name: "form_whatsapp" });
-      }
       window.dataLayer?.push({
         event: "whatsapp_click",
         click_location: "form_whatsapp",

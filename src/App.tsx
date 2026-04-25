@@ -95,9 +95,6 @@ function App() {
             rel="noopener noreferrer"
             aria-label="Agendar pelo WhatsApp"
             onClick={() => {
-              if (typeof window.fbq === "function") {
-                window.fbq("track", "Lead", { content_name: "fab_whatsapp" });
-              }
               window.dataLayer?.push({
                 event: "whatsapp_click",
                 click_location: "fab_whatsapp",
